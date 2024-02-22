@@ -45,12 +45,29 @@ const WeatherApp = () => {
 
       const data = await fetchWeather(city);
       console.log('API Response:', data);
+
+      // Check if the API response contains data
+      if (!data || !data.name) {
+        setError('City not found or the country does not exist');
+        setWeather(null);
+        return;
+      }
+
       setWeather(data);
       setError(null);
     } catch (err) {
-      console.error('API Error:', err);
-      setWeather(null);
-      setError('City not found');
+      // Check if the error is an AxiosError with status code 404
+      if (err.isAxiosError && err.response && err.response.status === 404) {
+        // Handle the 404 error (e.g., log or do nothing)
+        console.log('City not found or country does not exist');
+        setWeather(null);
+        setError('City not found or the country does not exist');
+      } else {
+        // Handle other errors
+        console.error('API Error:', err);
+        setWeather(null);
+        setError('An error occurred while fetching data');
+      }
     }
   };
 
