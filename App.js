@@ -73,7 +73,7 @@ const WeatherApp = () => {
 
   return (
     <ImageBackground
-      source={{ uri: isDarkMode ? 'https://cdn.dribbble.com/users/925716/screenshots/3333720/attachments/722376/after_noon.png' : 'https://cdn.dribbble.com/users/925716/screenshots/3333720/attachments/722375/night.png' }}
+      source={{ uri: isDarkMode ? 'https://cdn.dribbble.com/users/925716/screenshots/3333720/attachments/722375/night.png' : 'https://cdn.dribbble.com/users/925716/screenshots/3333720/attachments/722376/after_noon.png' }}
       style={[styles.container, isDarkMode && styles.darkContainer]}
     >
       {/* Header with Search Bar */}
